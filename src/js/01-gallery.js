@@ -46,17 +46,16 @@ function onClickGallery(event) {
         }
 
     const instance = basicLightbox.create(`
-        <img src="${event.target.dataset.source}" width="800" height="600">
-    `)
+        <img src="${event.target.dataset.source}" width="800" height="600">`, { onShow: () => { document.addEventListener("keydown", onCloseGallery); } });
     
     instance.show();
 
-    document.addEventListener("keydown", onClose);
+    const modalElement = document.querySelector(".modal");
+    modalElement.addEventListener("click", () => {instance.close();});
 
-    function onClose(event) {
+    function onCloseGallery(event) {
         if (event.code === "Escape") {
             instance.close();
-            document.removeEventListener("keyup", onClose);
         }
     }
 };

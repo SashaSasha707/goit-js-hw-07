@@ -23,20 +23,9 @@ const galleryMarkup = galleryItems
 galleryContainer.innerHTML = galleryMarkup;
 
 
-galleryContainer.addEventListener("click", onClickGallery)
-
-function onClickGallery(event) {
-    event.preventDefault();
-        if(event.target.nodeName !== "IMG"){
-            return;
-        }
-
     const lightboxGallery = new SimpleLightbox('.gallery a', {
         captions: true, // додати підписи до зображень
         captionsData: 'alt', // брати текст підписів з атрибуту alt
         captionDelay: 250, // затримка перед появою підписів
         animationSpeed: 250,
     });
-};
-
-console.log(galleryItems);
